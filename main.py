@@ -5,7 +5,6 @@ from os import path
 from sprites import *
 from settings import *
 from terrain import *
-from mob import *
 
 class Game:
     def __init__(self):
@@ -19,7 +18,7 @@ class Game:
         #pg.mixer.music.set_pos(5.0)
 
         #volumen
-        pg.mixer.music.set_volume(0.0)
+        pg.mixer.music.set_volume(0.2)
 
         #reproducir musica con loop
         pg.mixer.music.play(loops=-1)
@@ -32,7 +31,7 @@ class Game:
         #Start a new game
         self.all_sprites = pg.sprite.Group()
         self.mob_sprites = pg.sprite.Group()
-        #self.my_map = mymap()
+        self.my_map = mymap()
         self.mob = Mob(self)
         self.player = Player(self)
         self.all_sprites.add(self.mob)
@@ -54,11 +53,11 @@ class Game:
         #Game loop - Update
         self.all_sprites.update()
 
-    def draw_grid(self):
-        for x in range(0, WIDTH, TILESIZE):
-            pg.draw.line(self.screen, LIGHTGREY, (x, 0), (x, HEIGHT))
-        for y in range(0, HEIGHT, TILESIZE):
-            pg.draw.line(self.screen, LIGHTGREY, (0, y), (WIDTH, y))
+#     def draw_grid(self):
+#         for x in range(0, WIDTH, TILESIZE):
+#             pg.draw.line(self.screen, LIGHTGREY, (x, 0), (x, HEIGHT))
+#         for y in range(0, HEIGHT, TILESIZE):
+#             pg.draw.line(self.screen, LIGHTGREY, (0, y), (WIDTH, y))
 
     def events(self):
         #Game loop - Events
@@ -74,8 +73,8 @@ class Game:
     def draw(self):
         #Game loop - Draw
         self.screen.fill(WHITE)
-        #self.screen.blit(self.my_map, (-80, -40), (0, 0, 960, 680))
-        self.draw_grid()
+        self.screen.blit(self.my_map, (-80, -40), (0, 0, 960, 680))
+        #self.draw_grid()
         self.all_sprites.draw(self.screen)
         pg.display.flip()
 
