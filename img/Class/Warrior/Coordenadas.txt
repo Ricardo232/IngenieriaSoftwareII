@@ -1,0 +1,7 @@
+StandStill:
+961 x 1045
+96 x 96
+2881, 20 imagenes
+
+Collision:
+64, 77
